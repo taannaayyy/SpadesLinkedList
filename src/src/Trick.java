@@ -1,6 +1,10 @@
+//this class is for the trick
 public class Trick {
 
-    //attributes
+    //attributes for the trick
+    // cardsPlayes is for the cards that played in current trick
+    //numCardsPlayed is for the number of the cards that played in current trick
+    //trumpSuit is for the trump suit which is always Spades
     private LinkedList cardsPlayed;
     private int numCardsPlayed;
     private Suit trumpSuit;
@@ -15,30 +19,22 @@ public class Trick {
     // Add the card to the trick
     public void addCard(Card card) {
 
-        cardsPlayed.getNodeI(numCardsPlayed).data= card;
-        numCardsPlayed++;
     }
 
-    //tells if the round is complete or not
-    public boolean isComplete() {
-        return numCardsPlayed == 4;
-    }
+    //tells if the round is complete or not returns a boolean
+    /*public boolean isComplete() {
 
-    //returns the card that played
+    }*/
+
+    //returns the cards that played in the trick
+    /*
     public LinkedList getCards() {
-        return cardsPlayed;
-    }
 
-    // determine the player with the highest ranking card in the trick
-   /* public Player getWinner() {
-        int winnerIndex = 0;
-        for (int i = 1; i < 4; i++) {
-            if (cardsPlayed.getNodeI(i).data.getSuit() == trumpSuit && cardsPlayed[i].getRank() > cardsPlayed[winnerIndex].getRank()) {
-                winnerIndex = i;
-            } else if (cardsPlayed[i].getSuit() == cardsPlayed[0].getSuit() && cardsPlayed[i].getRank() > cardsPlayed[winnerIndex].getRank()) {
-                winnerIndex = i;
-            }
-        }
-        return cardsPlayed[winnerIndex].getPlayer();
+    }*/
+
+    // determine the player with the highest ranking card in the trick and return the player
+    /*
+    public Player getWinner() {
+
     }*/
 }

@@ -1,5 +1,9 @@
+//this class is for the players
 public class Player {
     //attributes
+    //name is for the name of the player
+    //hand is a linked list of the players cards
+    //score is for the players score
     private String name;
     private LinkedList hand;
     private int score;
@@ -23,7 +27,7 @@ public class Player {
 
     //method that removes a card from hand
     public void removeCardFromHand(Card card) {
-        //hand.remove(card);
+
     }
 
     //getter method for hand
@@ -31,7 +35,9 @@ public class Player {
         return hand;
     }
 
-
+    public String toString(){
+        return getName()+"'s hand: "+getHand();
+    }
 
 
 

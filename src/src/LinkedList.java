@@ -31,7 +31,9 @@ public class LinkedList {
         tail = newNode;
     }
 
-    //searches a value if no node exists, returns null
+    //searches a value that we give
+    // if the value that we search is in a list returns it
+    // if not returns null
     public node search(Card value) {
         node tmp = head;
         while (tmp != null) {
@@ -43,7 +45,7 @@ public class LinkedList {
         return null;
     }
 
-    //method that gets the node
+    //method that gets the node with index parameter if index not found returns null
     public node getNodeI(int i) {
         node tmp = head;
         int index = 0;
@@ -68,13 +70,7 @@ public class LinkedList {
         return count;
     }
 
-    //method that delete the head of the linked list
-    public void deleteFirst(){
-        head = head.getNext();
-        if (head == null){
-            tail = null;
-        }
-    }
+
 
     //method to get the previous node
     public node getPrevious(node node){
@@ -85,6 +81,14 @@ public class LinkedList {
             tmp = tmp.getNext();
         }
         return previous;
+    }
+
+    //method that deletes the head of the linked list
+    public void deleteFirst(){
+        head = head.getNext();
+        if (head == null){
+            tail = null;
+        }
     }
 
     //method to delete the last node
@@ -106,11 +110,13 @@ public class LinkedList {
 
     //toString method
     public String toString(){
+        int count =0;
         StringBuilder result = new StringBuilder();
         node tmp = head;
         while (tmp != null) {
-            result.append(tmp).append(" ");
+            result.append(Integer.toString(count)+")"+tmp).append(" ");
             tmp = tmp.getNext();
+            count++;
         }
         return result.toString();
     }
