@@ -2,7 +2,7 @@
 public class Trick {
 
     //attributes for the trick
-    // cardsPlayes is for the cards that played in current trick
+    // cardsPlayed is for the cards that played in current trick
     //numCardsPlayed is for the number of the cards that played in current trick
     //trumpSuit is for the trump suit which is always Spades
     private LinkedList cardsPlayed;

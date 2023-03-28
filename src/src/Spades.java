@@ -26,6 +26,15 @@ public class Spades {
         dealCards();
     }
 
+
+    //method to play the game (controls the flow and rules of the game and bot's actions,
+    //printing
+    //counting score
+    //and check if the game is over or not)
+    public void play(){
+
+    }
+
     //main method
     public static void main(String[] args) {
 
@@ -36,8 +45,8 @@ public class Spades {
         bot3= new Player("bot3");
         deck= new Deck();
         Spades spades= new Spades(player1,player1,player1,player1,deck);
-
         currentTrick= new Trick();
+
         System.out.println(deck);
         System.out.println(player1);
 

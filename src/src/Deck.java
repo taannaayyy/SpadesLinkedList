@@ -10,6 +10,7 @@ public class Deck {
 
     //constructor
     // when this constructor invoked it creates a linked list and fills the deck with a deck of cards.
+    //and shuffles it
     public Deck(){
         deck = new LinkedList();
         for (Suit suit : Suit.values()) {

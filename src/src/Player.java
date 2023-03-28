@@ -7,12 +7,15 @@ public class Player {
     private String name;
     private LinkedList hand;
     private int score;
+    private int numofTricks;
+    private int bid;
 
     //constructor
     public Player(String name){
         hand= new LinkedList();
         this.name=name;
         score=0;
+        numofTricks=0;
     }
 
     //getter method of players name
