@@ -16,6 +16,11 @@ public class Trick {
 
     // Add the cards to the trick
     public void addCard(Card card) {
+        cardsPlayed.insertLast(new node(card));
+    }
+
+    //method to clear the trick
+    public void clearTrick(){
 
     }
 
