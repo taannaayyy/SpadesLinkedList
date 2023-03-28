@@ -21,15 +21,6 @@ public class LinkedList {
         return head;
     }
 
-    //method to add a new node to the left
-    public void insertFirst(node newNode) {
-        if (tail == null) {
-            tail = newNode;
-        }
-        newNode.setNext(head);
-        head = newNode;
-    }
-
     //method to add a new node to the right
     public void insertLast(node newNode) {
         if (head == null) {
@@ -39,13 +30,6 @@ public class LinkedList {
         }
         tail = newNode;
     }
-
-    // method to insert a new node between two nodes
-    public void insertMiddle(node newNode, node previous) {
-        newNode.setNext(previous.getNext());
-        previous.setNext(newNode);
-    }
-
 
     //searches a value if no node exists, returns null
     public node search(Card value) {
