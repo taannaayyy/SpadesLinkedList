@@ -35,6 +35,7 @@ public class Player {
 
     }
 
+    //toString method for printing
     public String toString(){
 
     }

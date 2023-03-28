@@ -13,6 +13,11 @@ public class Spades {
 
     }
 
+    // determines the player with the highest ranking card in the trick and return the player
+    public Player getWinner() {
+
+    }
+
     //constructor
     public Spades(Player player1,Player bot1,Player bot2,Player bot3,Deck deck){
 

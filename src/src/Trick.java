@@ -16,7 +16,7 @@ public class Trick {
 
     // Add the cards to the trick
     public void addCard(Card card) {
-        cardsPlayed.insertLast(new node(card));
+
     }
 
     //method to clear the trick
@@ -30,14 +30,8 @@ public class Trick {
     }*/
 
     //returns the cards that played in the trick
-    /*
     public LinkedList getCards() {
+    }
 
-    }*/
 
-    // determine the player with the highest ranking card in the trick and return the player
-    /*
-    public Player getWinner() {
-
-    }*/
 }
