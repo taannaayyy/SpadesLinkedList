@@ -11,12 +11,10 @@ public class Trick {
 
     //constructor
     public Trick() {
-        cardsPlayed= new LinkedList();
-        numCardsPlayed = 0;
-        trumpSuit = Suit.SPADES;
+
     }
 
-    // Add the card to the trick
+    // Add the cards to the trick
     public void addCard(Card card) {
 
     }
