@@ -11,7 +11,9 @@ public class Trick {
 
     //constructor
     public Trick() {
-
+        cardsPlayed= new LinkedList();
+        numCardsPlayed = 0;
+        trumpSuit = Suit.SPADES;
     }
 
     // Add the cards to the trick
@@ -30,8 +32,8 @@ public class Trick {
     }*/
 
     //returns the cards that played in the trick
-    public LinkedList getCards() {
-    }
+   /* public LinkedList getCards() {
+    }*/
 
 
 }

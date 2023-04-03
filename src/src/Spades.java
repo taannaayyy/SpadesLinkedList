@@ -10,18 +10,38 @@ public class Spades {
 
     //method to deal the cards to players hand
     public static void dealCards(){
+       for(int i =0;i<13;i++) {
+           player1.addCardToHand(deck.getDeck().getNodeI(0).getData());
+           deck.getDeck().deleteFirst();
+       }
+       for(int i =0;i<13;i++) {
+           bot1.addCardToHand(deck.getDeck().getNodeI(0).getData());
+           deck.getDeck().deleteFirst();
+       }
+       for(int i =0;i<13;i++) {
+           bot2.addCardToHand(deck.getDeck().getNodeI(0).getData());
+           deck.getDeck().deleteFirst();
+       }
+       for(int i =0;i<13;i++) {
+           bot3.addCardToHand(deck.getDeck().getNodeI(0).getData());
+           deck.getDeck().deleteFirst();
+       }
+
 
     }
 
     // determines the player with the highest ranking card in the trick and return the player
-    public Player getWinner() {
+    /*public Player getWinner() {
 
-    }
+    }*/
 
     //constructor
     public Spades(Player player1,Player bot1,Player bot2,Player bot3,Deck deck){
-
-
+        this.player1=player1;
+        this.bot1=bot1;
+        this.bot2=bot2;
+        this.bot3=bot3;
+        this.deck=deck;
         //deals cards to players hand
 
     }
@@ -37,13 +57,21 @@ public class Spades {
 
     //main method
     public static void main(String[] args) {
-
-        //my tests
-        /*player1= new Player("Tanay");
+        player1= new Player("Tanay");
+        bot1 = new Player ("bot1");
+        bot2 = new Player ("bot2");
+        bot3 = new Player ("bot3");
         deck= new Deck();
-        Spades spades= new Spades(player1,player1,player1,player1,deck);
+        Spades spades= new Spades(player1,bot1,bot2,bot3,deck);
         System.out.println(deck);
-        System.out.println(player1);*/
+        System.out.println(player1);
+        dealCards();
+        System.out.println(deck);
+        System.out.println(player1);
+        System.out.println(bot1);
+        System.out.println(bot2);
+        System.out.println(bot3);
+
 
     }
 
