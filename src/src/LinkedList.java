@@ -70,8 +70,6 @@ public class LinkedList {
         return count;
     }
 
-
-
     //method to get the previous node
     public node getPrevious(node node){
         node tmp = head;

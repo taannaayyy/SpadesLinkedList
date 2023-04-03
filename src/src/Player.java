@@ -18,9 +18,25 @@ public class Player {
         numofTricks=0;
     }
 
-    //getter method of players name
+    //getter methods
     public String getName() {
         return name;
+    }
+
+    public LinkedList getHand() {
+        return hand;
+    }
+
+    public int getScore(){
+        return score;
+    }
+
+    public int getBid() {
+        return bid;
+    }
+
+    public int getNumofTricks() {
+        return numofTricks;
     }
 
     //method to add a card to players hand
@@ -31,11 +47,6 @@ public class Player {
     //method that removes a card from hand
     public void removeCardFromHand(Card card) {
 
-    }
-
-    //getter method for hand
-    public LinkedList getHand() {
-        return hand;
     }
 
     //toString method for printing

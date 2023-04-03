@@ -16,6 +16,19 @@ public class Trick {
         trumpSuit = Suit.SPADES;
     }
 
+    //getters
+    public LinkedList getCards() {
+        return cardsPlayed;
+    }
+
+    public Suit getTrumpSuit() {
+        return trumpSuit;
+    }
+
+    public int getNumCardsPlayed() {
+        return numCardsPlayed;
+    }
+
     // Add the cards to the trick
     public void addCard(Card card) {
 
@@ -27,13 +40,11 @@ public class Trick {
     }
 
     //tells if the round is complete or not returns a boolean
-    /*public boolean isComplete() {
+    public boolean isComplete() {
+        return true;
+    }
 
-    }*/
 
-    //returns the cards that played in the trick
-   /* public LinkedList getCards() {
-    }*/
 
 
 }

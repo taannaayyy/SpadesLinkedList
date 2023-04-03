@@ -10,22 +10,22 @@ public class Spades {
 
     //method to deal the cards to players hand
     public static void dealCards(){
-       for(int i =0;i<13;i++) {
-           player1.addCardToHand(deck.getDeck().getNodeI(0).getData());
-           deck.getDeck().deleteFirst();
-       }
-       for(int i =0;i<13;i++) {
-           bot1.addCardToHand(deck.getDeck().getNodeI(0).getData());
-           deck.getDeck().deleteFirst();
-       }
-       for(int i =0;i<13;i++) {
-           bot2.addCardToHand(deck.getDeck().getNodeI(0).getData());
-           deck.getDeck().deleteFirst();
-       }
-       for(int i =0;i<13;i++) {
-           bot3.addCardToHand(deck.getDeck().getNodeI(0).getData());
-           deck.getDeck().deleteFirst();
-       }
+        for(int i =0;i<13;i++) {
+            player1.addCardToHand(deck.getDeck().getNodeI(0).getData());
+            deck.getDeck().deleteFirst();
+        }
+        for(int i =0;i<13;i++) {
+            bot1.addCardToHand(deck.getDeck().getNodeI(0).getData());
+            deck.getDeck().deleteFirst();
+        }
+        for(int i =0;i<13;i++) {
+            bot2.addCardToHand(deck.getDeck().getNodeI(0).getData());
+            deck.getDeck().deleteFirst();
+        }
+        for(int i =0;i<13;i++) {
+            bot3.addCardToHand(deck.getDeck().getNodeI(0).getData());
+            deck.getDeck().deleteFirst();
+        }
 
 
     }
@@ -52,10 +52,10 @@ public class Spades {
     //counting score
     //and check if the game is over or not)
     public void play(){
-       while(player1.getScore()<500 && bot1.getScore()<500 && bot2.getScore()<500 && bot3.getScore()<500){
+        while(player1.getScore()<500 && bot1.getScore()<500 && bot2.getScore()<500 && bot3.getScore()<500){
             System.out.println("write the index of the card that you want to play");
 
-       }
+        }
     }
 
     //main method
@@ -66,8 +66,6 @@ public class Spades {
         bot3 = new Player ("bot3");
         deck= new Deck();
         Spades spades= new Spades(player1,bot1,bot2,bot3,deck);
-        System.out.println(deck);
-        System.out.println(player1);
         dealCards();
         System.out.println(deck);
         System.out.println(player1);
