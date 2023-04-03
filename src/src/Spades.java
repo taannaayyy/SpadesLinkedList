@@ -52,7 +52,10 @@ public class Spades {
     //counting score
     //and check if the game is over or not)
     public void play(){
+       while(player1.getScore()<500 && bot1.getScore()<500 && bot2.getScore()<500 && bot3.getScore()<500){
+            System.out.println("write the index of the card that you want to play");
 
+       }
     }
 
     //main method
