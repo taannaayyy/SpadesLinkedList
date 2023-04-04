@@ -31,6 +31,23 @@ public class Player {
         return score;
     }
 
+    //setters
+    public void setBid(int bid) {
+        this.bid = bid;
+    }
+
+    public void setNumofTricks(int numofTricks) {
+        this.numofTricks = numofTricks;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public void setHand(LinkedList hand) {
+        this.hand = hand;
+    }
+
     public int getBid() {
         return bid;
     }

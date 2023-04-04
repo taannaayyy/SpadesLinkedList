@@ -40,6 +40,10 @@ public class Deck {
         return deck;
     }
 
+    public static void setDeck(LinkedList deck) {
+        Deck.deck = deck;
+    }
+
     //method to check if the deck is empty or not
     public static boolean isEmpty(){
         return deck.isEmpty();
