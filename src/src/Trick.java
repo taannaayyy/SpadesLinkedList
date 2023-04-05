@@ -39,7 +39,7 @@ public class Trick {
         cardsPlayed.deleteLast();
         cardsPlayed.deleteLast();
         cardsPlayed.deleteLast();
-
+        cardsPlayed.deleteLast();
     }
 
     //tells if the round is complete or not returns a boolean
