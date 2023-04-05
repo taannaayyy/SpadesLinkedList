@@ -49,6 +49,9 @@ public class Spades {
     //and check if the game is over or not)
     public static void play(){
         Scanner scan = new Scanner(System.in);
+        currentRound=0;
+        currentTrick = new Trick();
+        boolean Broken = false;
 
         //getting bids
         System.out.println("write your your bid:");
@@ -75,12 +78,83 @@ public class Spades {
         bot3.setBid(bot3Bid);
         System.out.println("bot3's bid:"+bot3Bid);
 
-
+        //adding a card to a Trick for user
         for(int i = 0; i<13; i++){
+            if(!Broken){
+                Broken=true;
+                for(int k=0;k<13-i; k++){
+                    if(player1.getHand().getNodeI(k).getData().getSuit()!=Suit.SPADES){
+                        Broken=false;
+                    }
+                }
+            }
 
+
+            System.out.println("\n"+"round: "+(currentRound+1));
+            System.out.println("the game is broken: "+Broken);
+            System.out.println("your hand: "+player1.getHand());
+            System.out.println("write the index of the card that you want to play");
+            int inx = scan.nextInt();
+            while(inx<0 || inx>13-currentRound-1) {
+                System.out.println("enter a correct number, try again");
+                inx = scan.nextInt();
+            }
+            if(!Broken){
+                while(player1.getHand().getNodeI(inx).getData().getSuit()==Suit.SPADES){
+                    if (!Broken) {
+                        System.out.println("you can not play Spades yet");
+                        System.out.println("write the index of the card that you want to play");
+                        inx = scan.nextInt();
+                        while(inx<0 || inx>13-currentRound-1) {
+                            System.out.println("enter a correct number, try again");
+                            inx = scan.nextInt();
+                        }
+                    }
+                }
+            }
+
+
+
+
+            //adding users card to trick
+            currentTrick.getCards().insertLast(new node (new Card(player1.getHand().getNodeI(inx).getData().getRank(),player1.getHand().getNodeI(inx).getData().getSuit(),player1)));
+            System.out.println(player1.getName()+" played "+ player1.getHand().getNodeI(inx).getData().getRank()+" of "+player1.getHand().getNodeI(inx).getData().getSuit());
+            if(inx==0){
+                player1.getHand().deleteFirst();
+            } else {
+                player1.getHand().deleteMiddle(player1.getHand().getNodeI(inx));
+            }
+
+            //adding bots' cards to trick
+            if(!Broken) {
+                for (int j = 0; j < 13 - currentRound; j++) {
+                    if (currentTrick.getCards().getNodeI(0).getData().getSuit() == bot1.getHand().getNodeI(j).getData().getSuit()) {
+                        if (currentTrick.getCards().numberOfElements() == 1) {
+                            currentTrick.getCards().insertLast(new node(new Card(bot1.getHand().getNodeI(j).getData().getRank(), bot1.getHand().getNodeI(j).getData().getSuit(),bot1)));
+                            System.out.println(bot1.getName()+" played "+ bot1.getHand().getNodeI(j).getData().getRank()+" of "+bot1.getHand().getNodeI(j).getData().getSuit());
+                        }
+
+                    }
+                }
+                for (int l = 0; l < 13 - currentRound; l++) {
+                    if (currentTrick.getCards().numberOfElements() == 1) {
+                        if (bot1.getHand().getNodeI(l).getData().getSuit() == Suit.SPADES) {
+                            Broken = true;
+                            currentTrick.getCards().insertLast(new node(new Card(bot1.getHand().getNodeI(l).getData().getRank(), bot1.getHand().getNodeI(l).getData().getSuit(),bot1)));
+                        }
+                    }
+                }
+            }
+            else {
+                for(int m=0;m<13-currentRound;m++){
+
+                }
+            }
+
+
+            System.out.println("Trick: "+currentTrick.getCards());
+            currentRound++;
         }
-
-
     }
 
     //main method
