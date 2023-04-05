@@ -155,7 +155,7 @@ public class Spades {
             System.out.println("Trick: "+currentTrick.getCards());
             currentRound++;
         }
-    }
+    }/////
 
     //main method
     public static void main(String[] args) {
