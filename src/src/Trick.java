@@ -36,6 +36,9 @@ public class Trick {
 
     //method to clear the trick
     public void clearTrick(){
+        cardsPlayed.deleteLast();
+        cardsPlayed.deleteLast();
+        cardsPlayed.deleteLast();
 
     }
 

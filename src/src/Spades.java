@@ -58,7 +58,7 @@ public class Spades {
         int player1Bid = scan.nextInt();
 
         while(player1Bid>13 || player1Bid <0) {
-            System.out.println("please make a your bid between 0-13");
+            System.out.println("please make your bid between 0-13");
             System.out.println("write your your bid:");
             player1Bid = scan.nextInt();
         }
@@ -90,9 +90,12 @@ public class Spades {
             }
 
 
-            System.out.println("\n"+"round: "+(currentRound+1));
+            System.out.println("round: "+(currentRound+1));
             System.out.println("the game is broken: "+Broken);
             System.out.println("your hand: "+player1.getHand());
+            System.out.println("bot1's hand: "+bot1.getHand());
+            System.out.println("bot2's hand: "+bot2.getHand());
+
             System.out.println("write the index of the card that you want to play");
             int inx = scan.nextInt();
             while(inx<0 || inx>13-currentRound-1) {
@@ -113,9 +116,6 @@ public class Spades {
                 }
             }
 
-
-
-
             //adding users card to trick
             currentTrick.getCards().insertLast(new node (new Card(player1.getHand().getNodeI(inx).getData().getRank(),player1.getHand().getNodeI(inx).getData().getSuit(),player1)));
             System.out.println(player1.getName()+" played "+ player1.getHand().getNodeI(inx).getData().getRank()+" of "+player1.getHand().getNodeI(inx).getData().getSuit());
@@ -126,36 +126,94 @@ public class Spades {
             }
 
             //adding bots' cards to trick
-            if(!Broken) {
-                for (int j = 0; j < 13 - currentRound; j++) {
+            //if the bot is able to follow the leading suit
+            for (int j = 0; j < 13 - currentRound; j++) {
+                if (currentTrick.getCards().numberOfElements() == 1) {
                     if (currentTrick.getCards().getNodeI(0).getData().getSuit() == bot1.getHand().getNodeI(j).getData().getSuit()) {
-                        if (currentTrick.getCards().numberOfElements() == 1) {
-                            currentTrick.getCards().insertLast(new node(new Card(bot1.getHand().getNodeI(j).getData().getRank(), bot1.getHand().getNodeI(j).getData().getSuit(),bot1)));
-                            System.out.println(bot1.getName()+" played "+ bot1.getHand().getNodeI(j).getData().getRank()+" of "+bot1.getHand().getNodeI(j).getData().getSuit());
-                        }
-
-                    }
-                }
-                for (int l = 0; l < 13 - currentRound; l++) {
-                    if (currentTrick.getCards().numberOfElements() == 1) {
-                        if (bot1.getHand().getNodeI(l).getData().getSuit() == Suit.SPADES) {
-                            Broken = true;
-                            currentTrick.getCards().insertLast(new node(new Card(bot1.getHand().getNodeI(l).getData().getRank(), bot1.getHand().getNodeI(l).getData().getSuit(),bot1)));
+                        currentTrick.getCards().insertLast(new node(new Card(bot1.getHand().getNodeI(j).getData().getRank(), bot1.getHand().getNodeI(j).getData().getSuit(),bot1)));
+                        System.out.println(bot1.getName()+" played "+ bot1.getHand().getNodeI(j).getData().getRank()+" of "+bot1.getHand().getNodeI(j).getData().getSuit());
+                        if(currentTrick.getCards().numberOfElements()==2){
+                            if(j==0){
+                                bot1.getHand().deleteFirst();
+                            } else {
+                                bot1.getHand().deleteMiddle(bot1.getHand().getNodeI(j));
+                            }
                         }
                     }
                 }
             }
-            else {
-                for(int m=0;m<13-currentRound;m++){
-
+            //if the bot can not follow the leading suit it plays spades
+            for (int l = 0; l < 13 - currentRound; l++) {
+                if (currentTrick.getCards().numberOfElements() == 1) {
+                    if (bot1.getHand().getNodeI(l).getData().getSuit() == Suit.SPADES) {
+                        Broken = true;
+                        currentTrick.getCards().insertLast(new node(new Card(bot1.getHand().getNodeI(l).getData().getRank(), bot1.getHand().getNodeI(l).getData().getSuit(),bot1)));
+                        System.out.println(bot1.getName()+" played "+ bot1.getHand().getNodeI(l).getData().getRank()+" of "+bot1.getHand().getNodeI(l).getData().getSuit());
+                        if(currentTrick.getCards().numberOfElements()==2){
+                            if(l==0){
+                                bot1.getHand().deleteFirst();
+                            } else {
+                                bot1.getHand().deleteMiddle(bot1.getHand().getNodeI(l));
+                            }
+                        }
+                    }
                 }
             }
+            //if the bot can not follow the leading suit and also has not any spades it plays the first card on its hand
+            if (currentTrick.getCards().numberOfElements() == 1) {
+                currentTrick.getCards().insertLast(new node(new Card(bot1.getHand().getNodeI(0).getData().getRank(), bot1.getHand().getNodeI(0).getData().getSuit(),bot1)));
+                System.out.println(bot1.getName()+" played "+ bot1.getHand().getNodeI(0).getData().getRank()+" of "+bot1.getHand().getNodeI(0).getData().getSuit());
+                bot1.getHand().deleteFirst();
+            }
 
+
+            for (int j = 0; j < 13 - currentRound; j++) {
+                if (currentTrick.getCards().numberOfElements() == 2) {
+                    if (currentTrick.getCards().getNodeI(0).getData().getSuit() == bot2.getHand().getNodeI(j).getData().getSuit()) {
+                        currentTrick.getCards().insertLast(new node(new Card(bot2.getHand().getNodeI(j).getData().getRank(), bot2.getHand().getNodeI(j).getData().getSuit(),bot2)));
+                        System.out.println(bot2.getName()+" played "+ bot2.getHand().getNodeI(j).getData().getRank()+" of "+bot2.getHand().getNodeI(j).getData().getSuit());
+                        if(currentTrick.getCards().numberOfElements()==3){
+                            if(j==0){
+                                bot2.getHand().deleteFirst();
+                            } else {
+                                bot2.getHand().deleteMiddle(bot2.getHand().getNodeI(j));
+                            }
+                        }
+                    }
+                }
+            }
+            //if the bot can not follow the leading suit it plays spades
+            for (int l = 0; l < 13 - currentRound; l++) {
+                if (currentTrick.getCards().numberOfElements() == 2) {
+                    if (bot2.getHand().getNodeI(l).getData().getSuit() == Suit.SPADES) {
+                        Broken = true;
+                        currentTrick.getCards().insertLast(new node(new Card(bot2.getHand().getNodeI(l).getData().getRank(), bot2.getHand().getNodeI(l).getData().getSuit(),bot2)));
+                        System.out.println(bot2.getName()+" played "+ bot2.getHand().getNodeI(l).getData().getRank()+" of "+bot2.getHand().getNodeI(l).getData().getSuit());
+                        if(currentTrick.getCards().numberOfElements()==3){
+                            if(l==0){
+                                bot2.getHand().deleteFirst();
+                            } else {
+                                bot2.getHand().deleteMiddle(bot2.getHand().getNodeI(l));
+                            }
+                        }
+                    }
+                }
+            }
+            //if the bot can not follow the leading suit and also has not any spades it plays the first card on its hand
+            if (currentTrick.getCards().numberOfElements() == 2) {
+                currentTrick.getCards().insertLast(new node(new Card(bot2.getHand().getNodeI(0).getData().getRank(), bot2.getHand().getNodeI(0).getData().getSuit(),bot2)));
+                System.out.println(bot2.getName()+" played "+ bot2.getHand().getNodeI(0).getData().getRank()+" of "+bot2.getHand().getNodeI(0).getData().getSuit());
+                bot2.getHand().deleteFirst();
+            }
 
             System.out.println("Trick: "+currentTrick.getCards());
             currentRound++;
+            currentTrick.clearTrick();
+
+
+
         }
-    }/////
+    }
 
     //main method
     public static void main(String[] args) {
