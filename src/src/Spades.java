@@ -39,9 +39,271 @@ public class Spades {
     }
 
     // determines the player with the highest ranking card in the trick and return the player
-    /*public Player getWinner() {
+    public static Player getWinner() {
+        int first = 0;
+        int second = 0;
+        int third = 0;
+        int fourth = 0;
+        for(int i = 1; i<5;i++){
+            switch (currentTrick.getCards().getNodeI(i-1).getData().getRank()) {
+                case ACE:
+                    switch (i) {
+                        case 1:
+                            first = first + 13;
+                            break;
+                        case 2:
+                            second=second+13;
+                            break;
+                        case 3:
+                            third=third+13;
+                            break;
+                        case 4:
+                            fourth=fourth+13;
+                            break;
+                    }
+                    break;
 
-    }*/
+                case KING:
+                    switch (i) {
+                        case 1:
+                            first = first + 12;
+                            break;
+                        case 2:
+                            second=second+12;
+                            break;
+                        case 3:
+                            third=third+12;
+                            break;
+                        case 4:
+                            fourth=fourth+12;
+                            break;
+                    }
+                    break;
+                case QUEEN:
+                    switch (i) {
+                        case 1:
+                            first = first + 11;
+                            break;
+                        case 2:
+                            second=second+11;
+                            break;
+                        case 3:
+                            third=third+11;
+                            break;
+                        case 4:
+                            fourth=fourth+11;
+                            break;
+                    }
+                    break;
+                case JACK:
+                    switch (i) {
+                        case 1:
+                            first = first + 10;
+                            break;
+                        case 2:
+                            second=second+10;
+                            break;
+                        case 3:
+                            third=third+10;
+                            break;
+                        case 4:
+                            fourth=fourth+10;
+                            break;
+                    }
+                    break;
+                case NINE:
+                    switch (i) {
+                        case 1:
+                            first = first + 9;
+                            break;
+                        case 2:
+                            second=second+9;
+                            break;
+                        case 3:
+                            third=third+9;
+                            break;
+                        case 4:
+                            fourth=fourth+9;
+                            break;
+                    }
+                    break;
+                case EIGHT:
+                    switch (i) {
+                        case 1:
+                            first = first + 8;
+                            break;
+                        case 2:
+                            second=second+8;
+                            break;
+                        case 3:
+                            third=third+8;
+                            break;
+                        case 4:
+                            fourth=fourth+8;
+                            break;
+                    }
+                    break;
+                case SEVEN:
+                    switch (i) {
+                        case 1:
+                            first = first + 7;
+                            break;
+                        case 2:
+                            second=second+7;
+                            break;
+                        case 3:
+                            third=third+7;
+                            break;
+                        case 4:
+                            fourth=fourth+7;
+                            break;
+                    }
+                    break;
+                case SIX:
+                    switch (i) {
+                        case 1:
+                            first = first + 6;
+                            break;
+                        case 2:
+                            second=second+6;
+                            break;
+                        case 3:
+                            third=third+6;
+                            break;
+                        case 4:
+                            fourth=fourth+6;
+                            break;
+                    }
+                    break;
+                case FIVE:
+                    switch (i) {
+                        case 1:
+                            first = first + 5;
+                            break;
+                        case 2:
+                            second=second+5;
+                            break;
+                        case 3:
+                            third=third+5;
+                            break;
+                        case 4:
+                            fourth=fourth+5;
+                            break;
+                    }
+                    break;
+                case FOUR:
+                    switch (i) {
+                        case 1:
+                            first = first + 4;
+                            break;
+                        case 2:
+                            second=second+4;
+                            break;
+                        case 3:
+                            third=third+4;
+                            break;
+                        case 4:
+                            fourth=fourth+4;
+                            break;
+                    }
+                    break;
+                case THREE:
+                    switch (i) {
+                        case 1:
+                            first = first + 3;
+                            break;
+                        case 2:
+                            second=second+3;
+                            break;
+                        case 3:
+                            third=third+3;
+                            break;
+                        case 4:
+                            fourth=fourth+3;
+                            break;
+                    }
+                    break;
+                case TWO:
+                    switch (i) {
+                        case 1:
+                            first = first + 2;
+                            break;
+                        case 2:
+                            second=second+2;
+                            break;
+                        case 3:
+                            third=third+2;
+                            break;
+                        case 4:
+                            fourth=fourth+2;
+                            break;
+                    }
+                    break;
+            }
+        }
+        for(int i =0;i<4;i++){
+            if(currentTrick.getCards().getNodeI(i).getData().getSuit()==Suit.SPADES){
+                switch (i+1) {
+                    case 1:
+                        first = first + 1000;
+                        break;
+                    case 2:
+                        second = second + 1000;
+                        break;
+                    case 3:
+                        third = third + 1000;
+                        break;
+                    case 4:
+                        fourth = fourth + 1000;
+                        break;
+                }
+            }
+            else if (currentTrick.getCards().getNodeI(i).getData().getSuit()==currentTrick.getCards().getNodeI(0).getData().getSuit()){
+                switch (i+1) {
+                    case 1:
+                        first = first + 100;
+                        break;
+                    case 2:
+                        second = second + 100;
+                        break;
+                    case 3:
+                        third = third + 100;
+                        break;
+                    case 4:
+                        fourth = fourth + 100;
+                        break;
+                }
+            }
+        }
+        int biggest = first;
+
+        if (second > biggest) {
+            biggest = second;
+        }
+
+        if (third > biggest) {
+            biggest = third;
+        }
+
+        if (fourth > biggest) {
+            biggest = fourth;
+        }
+        if(biggest==first){
+            return player1;
+        }
+        if(biggest==second){
+            return bot1;
+        }
+        if(biggest==third){
+            return bot2;
+        }
+        else return bot3;
+
+    }
+
+
+
+
 
     //method to play the game (controls the flow and rules of the game and bot's actions,
     //printing
@@ -250,14 +512,10 @@ public class Spades {
                 System.out.println(bot3.getName()+" played "+ bot3.getHand().getNodeI(0).getData().getRank()+" of "+bot3.getHand().getNodeI(0).getData().getSuit());
                 bot3.getHand().deleteFirst();
             }
-
-
-
+            System.out.println(getWinner().getName());
             System.out.println("Trick: "+currentTrick.getCards());
             currentRound++;
             currentTrick.clearTrick();
-
-
 
         }
     }
