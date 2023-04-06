@@ -585,7 +585,6 @@ public class Spades {
         deck= new Deck();
         Spades spades= new Spades(player1,bot1,bot2,bot3,deck);
         dealCards();
-        System.out.println(deck);
         System.out.println(player1);
         System.out.println(bot1);
         System.out.println(bot2);
