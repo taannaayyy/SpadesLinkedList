@@ -512,12 +512,49 @@ public class Spades {
                 System.out.println(bot3.getName()+" played "+ bot3.getHand().getNodeI(0).getData().getRank()+" of "+bot3.getHand().getNodeI(0).getData().getSuit());
                 bot3.getHand().deleteFirst();
             }
-            System.out.println(getWinner().getName());
+
+            getWinner().setNumofTricks((getWinner().getNumofTricks()+1));
             System.out.println("Trick: "+currentTrick.getCards());
+            System.out.println(getWinner().getName()+" takes");
             currentRound++;
             currentTrick.clearTrick();
-
+            //end of the trick
         }
+
+        //end of the deck
+        //output of the number of the tricks that players took
+        System.out.println("player 1's trick: "+player1.getNumofTricks());
+        System.out.println("bot1's tricks: "+bot1.getNumofTricks());
+        System.out.println("bot2's tricks: "+bot2.getNumofTricks());
+        System.out.println("bot3's tricks: "+bot3.getNumofTricks()+"\n");
+
+
+        //adding scores related to players bids and scores
+        if (player1Bid>player1.getNumofTricks()){
+            player1.setScore(player1.getScore()-(player1.getBid()*10));
+        } else if (player1.getNumofTricks()>=player1Bid) {
+            player1.setScore(player1.getScore()+(player1Bid*10)+(player1.getNumofTricks()-player1Bid));
+        }
+        if (bot1Bid>bot1.getNumofTricks()){
+            bot1.setScore(bot1.getScore()-(bot1.getBid()*10));
+        } else if (bot1.getNumofTricks()>=bot1Bid) {
+            bot1.setScore(bot1.getScore()+(bot1Bid*10)+(bot1.getNumofTricks()-bot1Bid));
+        }
+        if (bot2Bid>bot2.getNumofTricks()){
+            bot2.setScore(bot2.getScore()-(bot2.getBid()*10));
+        } else if (bot2.getNumofTricks()>=bot2Bid) {
+            bot2.setScore(bot2.getScore()+(bot2Bid*10)+(bot2.getNumofTricks()-bot2Bid));
+        }
+        if (bot3Bid>bot3.getNumofTricks()){
+            bot3.setScore(bot3.getScore()-(bot3.getBid()*10));
+        } else if (bot3.getNumofTricks()>=bot3Bid) {
+            bot3.setScore(bot3.getScore()+(bot3Bid*10)+(bot3.getNumofTricks()-bot3Bid));
+        }
+        System.out.println("player 1's score: "+player1.getScore());
+        System.out.println("bot1's score: "+bot1.getScore());
+        System.out.println("bot2's score: "+bot2.getScore());
+        System.out.println("bot3's score: "+bot3.getScore());
+
     }
 
     //main method
@@ -534,7 +571,10 @@ public class Spades {
         System.out.println(bot1);
         System.out.println(bot2);
         System.out.println(bot3);
-        play();
+        while(player1.getScore()<5&&bot1.getScore()<500&&bot2.getScore()<500&&bot3.getScore()<500){
+            play();
+        }
+
 
     }
 
