@@ -530,25 +530,44 @@ public class Spades {
 
 
         //adding scores related to players bids and scores
-        if (player1Bid>player1.getNumofTricks()){
+        if (player1Bid>player1.getNumofTricks()&&player1Bid!=0){
             player1.setScore(player1.getScore()-(player1.getBid()*10));
-        } else if (player1.getNumofTricks()>=player1Bid) {
+        } else if (player1.getNumofTricks()>=player1Bid&&player1Bid!=0) {
             player1.setScore(player1.getScore()+(player1Bid*10)+(player1.getNumofTricks()-player1Bid));
+        } else if(player1Bid==0&&player1.getNumofTricks()==0){
+            player1.setScore(player1.getScore()+100);
+        } else if (player1Bid==0&&player1.getNumofTricks()!=0) {
+            player1.setScore(player1.getScore()-100);
         }
-        if (bot1Bid>bot1.getNumofTricks()){
+
+        if (bot1Bid>bot1.getNumofTricks()&&bot1Bid!=0){
             bot1.setScore(bot1.getScore()-(bot1.getBid()*10));
-        } else if (bot1.getNumofTricks()>=bot1Bid) {
+        } else if (bot1.getNumofTricks()>=bot1Bid&&bot1Bid!=0) {
             bot1.setScore(bot1.getScore()+(bot1Bid*10)+(bot1.getNumofTricks()-bot1Bid));
+        }else if(bot1Bid==0&&bot1.getNumofTricks()==0){
+            bot1.setScore(bot1.getScore()+100);
+        } else if (bot1Bid==0&&bot1.getNumofTricks()!=0) {
+            bot1.setScore(bot1.getScore()-100);
         }
-        if (bot2Bid>bot2.getNumofTricks()){
+
+        if (bot2Bid>bot2.getNumofTricks()&&bot2Bid!=0){
             bot2.setScore(bot2.getScore()-(bot2.getBid()*10));
-        } else if (bot2.getNumofTricks()>=bot2Bid) {
+        } else if (bot2.getNumofTricks()>=bot2Bid&&bot2Bid!=0) {
             bot2.setScore(bot2.getScore()+(bot2Bid*10)+(bot2.getNumofTricks()-bot2Bid));
+        }else if(bot2Bid==0&&bot2.getNumofTricks()==0){
+            bot2.setScore(bot2.getScore()+100);
+        } else if (bot2Bid==0&&bot2.getNumofTricks()!=0) {
+            bot2.setScore(bot2.getScore()-100);
         }
-        if (bot3Bid>bot3.getNumofTricks()){
+
+        if (bot3Bid>bot3.getNumofTricks()&&bot3Bid!=0){
             bot3.setScore(bot3.getScore()-(bot3.getBid()*10));
-        } else if (bot3.getNumofTricks()>=bot3Bid) {
+        } else if (bot3.getNumofTricks()>=bot3Bid&&bot3Bid!=0) {
             bot3.setScore(bot3.getScore()+(bot3Bid*10)+(bot3.getNumofTricks()-bot3Bid));
+        }else if(bot3Bid==0&&bot3.getNumofTricks()==0){
+            bot3.setScore(bot3.getScore()+100);
+        } else if (bot3Bid==0&&bot3.getNumofTricks()!=0) {
+            bot3.setScore(bot3.getScore()-100);
         }
         System.out.println("player 1's score: "+player1.getScore());
         System.out.println("bot1's score: "+bot1.getScore());
