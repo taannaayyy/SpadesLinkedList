@@ -589,7 +589,7 @@ public class Spades {
         System.out.println(bot1);
         System.out.println(bot2);
         System.out.println(bot3);
-        while(player1.getScore()<5&&bot1.getScore()<500&&bot2.getScore()<500&&bot3.getScore()<500){
+        while(player1.getScore()<500&&bot1.getScore()<500&&bot2.getScore()<500&&bot3.getScore()<500){
             play();
         }
 
